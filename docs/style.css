@@ -91,6 +91,25 @@ table, tr, th {
     padding-right: 5px;
 }
 
+.startBtn {
+    border: 2px solid rgb(13, 13, 204);
+    border-radius: 20px;
+    padding: 20px 35px;
+    cursor: pointer;
+    background-color: rgba(27, 106, 176, 0.062);
+    font-size: 20px;
+    transition-duration: 0.25s;
+    margin-top: 10px;
+}
+
+.startBtn:hover {
+    background-color: rgb(13, 13, 204);
+    transition-duration: 0.4s;
+    color: white;
+    border-radius: 35px;
+    padding: 20px 55px;
+}
+
 .mainBtn {
     border: 2px solid rgb(13, 13, 204);
     border-radius: 20px;
@@ -107,7 +126,7 @@ table, tr, th {
     transition-duration: 0.4s;
     color: white;
     border-radius: 35px;
-    padding: 20px 55px;
+    padding: 20px 40px;
 }
   
 .hide {
