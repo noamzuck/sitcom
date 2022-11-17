@@ -1,0 +1,194 @@
+function c(v){console.log(v)}
+function t(v){console.table(v)}
+
+function start(){
+  document.getElementById('main-div').classList.add('hide');
+  document.getElementById('main-div').classList.remove('main-container');
+  document.getElementById('quastionCard').classList.remove('hide');
+  document.getElementById('quastionCard').classList.add('main-container');
+
+  document.getElementById('theQue').innerHTML = ques[0];
+}
+
+function answerBtn(answer){
+  input.push(answer);
+  nextQue();
+}
+
+function showPopWin(id){
+  for(var i = 0; i < ques.length; i++){
+    document.getElementById('des' + i).innerHTML = base[words[id]][i];
+  }
+  document.getElementById('finalDiv').classList.add('hide');
+  document.getElementById('finalDiv').classList.remove('main-container');
+  document.getElementById('rateDiv').classList.remove('hide');
+  document.getElementById('rateDiv').classList.add('modal-content');
+}
+
+function hidePopWin(){
+  document.getElementById('rateDiv').classList.add('hide');
+  document.getElementById('rateDiv').classList.remove('modal-content');
+  document.getElementById('finalDiv').classList.remove('hide');
+  document.getElementById('finalDiv').classList.add('main-container');
+}
+
+function nextQue(){
+  var n = input.length;
+  if(n != ques.length){
+    var theCurrentQue = ques[n];
+    document.getElementById('theQue').innerHTML = theCurrentQue;
+  } else {
+    var amount = input.length;
+    for(var key in base){
+        wins.push({name: key, difference: 0});
+    }
+    
+    for(var key in base){
+      var i = 0;
+      var newKey = words.indexOf(key);
+      for(var item in base[key]){
+        if(input[item] == 0) i++;
+        wins[newKey].difference += Math.abs(base[key][item] - input[item]);
+      }
+      wins[newKey].difference = (100 - ((wins[newKey].difference / (amount - i)) / 5 * 100)).toFixed(2);
+    }
+    
+    wins.sort(function(a, b){return b.difference - a.difference});
+
+    for(var key in wins){
+      var newHunBar = document.createElement('div');
+
+      var newBar = document.createElement('div');
+      newBar.classList.add('barRes');
+      newBar.style.width = wins[key].difference + '%';
+
+      var newRes = document.createElement('p');
+      newRes.classList.add('result');
+      newRes.innerHTML = (parseInt(key) + 1) + '# - ' + wins[key].name + ' (' + wins[key].difference + '% התאמה)';
+      
+      document.getElementById('finalDiv').appendChild(newHunBar);
+      newHunBar.outerHTML = '<div id="hunBar' + key + '" class="barHunRes" onclick="showPopWin(' + key + ')"></div>';
+      document.getElementById('hunBar' + key).appendChild(newBar);
+      newBar.appendChild(newRes);
+    }
+
+    document.getElementById('quastionCard').classList.add('hide');
+    document.getElementById('quastionCard').classList.remove('main-container');
+    document.getElementById('finalDiv').classList.remove('hide');
+    document.getElementById('finalDiv').classList.add('main-container');
+  }
+}
+
+var input = [];
+var wins = [];
+
+var ques = [
+  'מה',
+  'העדה',
+  'שלמה',
+  'I',
+  'afraid',
+  'from',
+  'the',
+  'monster',
+  'in',
+  'the',
+  'closet',
+  'Rain'
+];
+
+var table = document.createElement('table');
+document.getElementById('popWindowData').appendChild(table);
+var tr = document.createElement('tr');
+table.appendChild(tr);
+var th;
+
+for(var i = 0; i < ques.length; i++){
+  if(i % parseInt(ques.length / 1) == 0) {
+    th = document.createElement('th');
+    tr.appendChild(th);
+  }
+
+  var newBox = document.createElement('div');
+  newBox.classList.add('boxRate');
+  th.appendChild(newBox);
+
+  var newItem = document.createElement('p');
+  newItem.classList.add('rateTitle');
+  newItem.innerHTML = ques[i];
+
+  newBox.appendChild(newItem);
+
+  var newItemDes = document.createElement('p');
+  newItemDes.id = 'des' + i;
+  newItemDes.classList.add('rateDes');
+  newItemDes.innerHTML = 0;
+
+  newBox.appendChild(newItemDes);
+}
+
+
+var words = ['Harvard', 'Yale', 'Oxford', 'Nosh', 'MIT', 'Noam', 'Dell', 'YK8', 'IL', 'USA', 'Nba', 'Noah', 'HP', 'Friends', 'New Girl', 'Philly', 'NYC', 'LA', 'IDK', 'LOL'];
+
+var base = {
+  Harvard: [
+    1, 1, 4, 4, 1, 4, 3, 5, 5, 2, 2, 4
+  ],
+  Yale: [
+    5, 1, 2, 3, 3, 3, 1, 5, 1, 2, 3, 3
+  ],
+  Oxford: [
+    3, 5, 4, 1, 1, 5, 3, 4, 3, 1, 1, 4
+  ],
+  Nosh: [
+    5, 5, 4, 1, 4, 2, 2, 2, 3, 1, 5, 4
+  ],
+  MIT: [
+    2, 5, 1, 4, 4, 1, 2, 3, 1, 3, 1, 1
+  ],
+  Noam: [
+    1, 3, 4, 1, 5, 4, 4, 1, 5, 2, 3, 2
+  ],
+  Dell: [
+    4, 1, 3, 1, 4, 2, 5, 5, 4, 5, 2, 5
+  ],
+  YK8: [
+    4, 5, 1, 4, 4, 5, 3, 5, 1, 3, 2, 3
+  ],
+  IL: [
+    5, 4, 3, 4, 2, 1, 5, 1, 4, 2, 2, 2
+  ],
+  USA: [
+    2, 3, 3, 3, 4, 3, 3, 1, 2, 1, 3, 3
+  ],
+  Nba: [
+    1, 3, 2, 4, 4, 2, 2, 1, 5, 4, 4, 2
+  ],
+  Noah: [
+    5, 4, 5, 3, 5, 3, 1, 1, 2, 5, 5, 5
+  ],
+  HP: [
+    2, 2, 1, 3, 1, 3, 5, 2, 3, 4, 3, 1
+  ],
+  Friends: [
+    5, 3, 5, 5, 2, 5, 2, 3, 3, 4, 3, 2
+  ],
+  'New Girl': [
+    4, 1, 5, 3, 3, 3, 4, 5, 5, 2, 1, 4
+  ],
+  Philly: [
+    3, 2, 1, 3, 2, 5, 3, 2, 4, 1, 2, 1
+  ],
+  NYC: [
+    4, 3, 4, 2, 3, 5, 4, 4, 3, 3, 2, 2
+  ],
+  LA: [
+    5, 5, 2, 5, 5, 5, 1, 4, 3, 3, 1, 5
+  ],
+  IDK: [
+    3, 1, 2, 2, 1, 3, 4, 2, 2, 3, 4, 3
+  ],
+  LOL: [
+    3, 3, 4, 4, 3, 1, 5, 3, 2, 2, 5, 1
+  ]
+};
