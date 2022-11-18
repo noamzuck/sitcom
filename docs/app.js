@@ -144,9 +144,10 @@ for(var i = 0; i < ques.length; i++){
 }
 
 
-var words = ['Harvard', 'Yale', 'Oxford', 'Nosh', 'MIT', 'Noam', 'Dell', 'YK8', 'IL', 'USA', 'Nba', 'Noah', 'HP', 'Friends', 'New Girl', 'Philly', 'NYC', 'LA', 'IDK', 'LOL'];
+var words = ['המפץ הגדול', 'Harvard', 'Yale', 'Oxford', 'Nosh', 'MIT', 'Noam', 'Dell', 'YK8', 'IL', 'USA', 'Nba', 'Noah', 'HP', 'Friends', 'New Girl', 'Philly', 'NYC', 'LA', 'IDK', 'LOL'];
 
 var base = {
+  "המפץ הגדול": [3, 3, 1, 3, 4, 5, 1, 4, 5, 4, 2, 5, 5],
   Harvard: [
     1, 1, 4, 4, 1, 4, 3, 5, 5, 2, 2, 4, 0
   ],
