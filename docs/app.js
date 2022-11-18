@@ -48,7 +48,7 @@ function nextQue(){
       var newKey = words.indexOf(key);
       for(var item in base[key]){
         if(input[item] == 0) i++;
-        wins[newKey].difference += Math.abs(base[key][item] - input[item]);
+        else wins[newKey].difference += Math.abs(base[key][item] - input[item]);
       }
       wins[newKey].difference = (100 - ((wins[newKey].difference / (amount - i)) / 5 * 100)).toFixed(2);
     }
