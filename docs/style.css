@@ -3,6 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: firebrick;
+    font-family: 'Assistant', sans-serif;
 }
 
 table, tr, th {
@@ -11,21 +12,23 @@ table, tr, th {
 
 .main-container {
     margin: 20px;
-    width: 65%;
+    width: 80%;
     border-radius: 50px;
     padding: 15px;
     box-shadow: 0 0 10px;
     background-color: rgb(249, 249, 249);
     text-align: center;
-    padding-bottom: 75px;
+    padding-bottom: 30px;
     direction: rtl;
     margin-bottom: 30px;
 }
 
 .title {
-    margin-top: 50px;
+    margin-top: 25px;
     font-size: 50px;
     margin-bottom: 5px;
+    margin-left: 75px;
+    margin-right: 75px;
 }
 
 .description {
@@ -36,13 +39,23 @@ table, tr, th {
     text-align: right;
 }
 
+.descriptionQue {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 20px;
+    text-align: center;
+}
+
 .rateTitle {
     font-size: 30px;
     margin-bottom: -10px;
 }
 
 .rateDes {
-    font-size: 18px;
+    font-size: 50px;
+    margin: -5px;
 }
 
 .result {
@@ -54,7 +67,7 @@ table, tr, th {
     text-align: right;
     position: relative;
     transform: translateY(60%);
-    width: 1000px;
+    width: 600px;
 }
 
 .barRes {
@@ -64,6 +77,10 @@ table, tr, th {
     border-radius: 35px;
     padding-top: 3px;
     padding-bottom: 3px;
+    border-top-right-radius: 35px;
+    border-bottom-right-radius: 35px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
 
 .barHunRes {
@@ -119,6 +136,7 @@ table, tr, th {
     font-size: 20px;
     transition-duration: 0.25s;
     margin-top: 10px;
+    font-family: 'Assistant', sans-serif;
 }
 
 .mainBtn:hover {
@@ -170,6 +188,8 @@ table, tr, th {
   align-items: center;
   position: relative;
   margin-bottom: 30px;
+  text-align: center;
+  direction: rtl;
 }
 
 .modal-content-table {
@@ -179,28 +199,24 @@ table, tr, th {
 }
 
 .closeBtn {
-  color: black;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+  border: 2px solid rgb(204, 13, 13);
+  border-radius: 20px;
+  padding: 10px 60px;
+  cursor: pointer;
+  background-color: rgba(176, 27, 27, 0.062);
+  font-size: 20px;
+  transition-duration: 0.25s;
+  margin-top: 10px;
+  font-family: 'Assistant', sans-serif;
 }
 
 .closeBtn:hover,
 .closeBtn:focus {
-  color: blue;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.credit {
-    position: fixed;
-    right: 5%;
-    top: 88%;
-    background-color: rgb(190, 211, 230);
-    border-radius: 25px;
-    box-shadow: 0 0 10px;
-    padding: 0 35px;
-    margin: -15px;
+  background-color: rgb(204, 13, 13);
+  transition-duration: 0.4s;
+  color: white;
+  border-radius: 35px;
+  padding: 10px 75px;
 }
 
 .credit-text {
@@ -208,4 +224,5 @@ table, tr, th {
     direction: rtl;
     color: black;
     font-size: 18px;
+    padding-top: 10px;
 }

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;500;800&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main-div" class="main-container">
+        <p class="title">Welcome!</p>
+
+        <p class="description">Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla</p>
+        <button class="startBtn" onclick="start()">Click Here To Start</button>
+        
+        <p class="credit-text">
+            יוצר:
+            <br>
+            Noam Zuck
+        </p>
+    </div>
+    
+    <div id="quastionCard" class="hide">
+        <p id="theQue" class="title"></p>
+        <p id="theQueDes" class="descriptionQue"></p>
+
+        <table class="widthHun">
+            <tr style="display:inline;">
+                <th>
+                    <button id="1btn" class="mainBtn widthHun" onclick="answerBtn(1)">1</button>
+                    <button id="4btn" class="mainBtn widthHun" onclick="answerBtn(4)">4</button>
+                </th>
+                <th>
+                    <button id="2btn" class="mainBtn widthHun" onclick="answerBtn(2)">2</button>
+                    <button id="5btn" class="mainBtn widthHun" onclick="answerBtn(5)">5</button>
+                </th>
+                <th>
+                    <button id="3btn" class="mainBtn widthHun" onclick="answerBtn(3)">3</button>
+                    <button class="mainBtn widthHun" onclick="answerBtn(0)">לא משנה לי</button>
+                </th>
+            </tr>
+        </table>
+
+        <p class="credit-text">
+            יוצר:
+            <br>
+            Noam Zuck
+        </p>
+    </div>
+
+    <!--class="hide"-->
+    <div id="finalDiv" class="hide">
+        <p class="credit-text">
+            יוצר:
+            <br>
+            Noam Zuck
+        </p>
+        
+        <p id="theQue" class="title" style="margin-bottom: 50px; margin-top: 10px;">הסיטקום הכי מומלץ עבורך הוא:</p>
+    </div>
+
+    <div id="rateDiv" class="hide">
+        <button class="closeBtn" onclick="hidePopWin()">סגור &times;</button>
+        <p class="credit-text">
+            יוצר:
+            <br>
+            Noam Zuck
+        </p>
+        
+        <p id="theQue" class="title" style="margin-bottom: 10px; margin-top: 10px;">מידע על הסדרה:</p>
+        <div id="popWindowData" class="modal-content-table"></div>
+        
+        <button class="closeBtn" onclick="hidePopWin()">סגור &times;</button>
+    </div>
+</body>
+<script src="app.js"></script>
+</html>
