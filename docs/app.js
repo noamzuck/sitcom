@@ -17,7 +17,7 @@ function answerBtn(answer){
 }
 
 function showPopWin(id){
-  for(var i = 0; i < ques.length; i++){
+  for(var i = 0; i < quesShort.length; i++){
     document.getElementById('des' + i).innerHTML = base[words[id]][i];
   }
   document.getElementById('finalDiv').classList.add('hide');
@@ -146,14 +146,27 @@ quesDes = [
   ''
 ];
 
+var quesShort = [
+'מצחיקה',
+'רומנטית',
+'אקשן',
+'מדע בדיוני',
+'אורך',
+'דמויות ראשיות',
+'שבירת הקיר הרביעי',
+'גסות',
+'חיים יומיומיים',
+'ישנה'
+];
+
 var table = document.createElement('table');
 document.getElementById('popWindowData').appendChild(table);
 var tr = document.createElement('tr');
 table.appendChild(tr);
 var th;
 
-for(var i = 0; i < ques.length; i++){
-  if(i % parseInt(ques.length / 1) == 0) {
+for(var i = 0; i < quesShort.length; i++){
+  if(i % parseInt(quesShort.length / 3) == 0) {
     th = document.createElement('th');
     tr.appendChild(th);
   }
@@ -164,7 +177,7 @@ for(var i = 0; i < ques.length; i++){
 
   var newItem = document.createElement('p');
   newItem.classList.add('rateTitle');
-  newItem.innerHTML = ques[i];
+  newItem.innerHTML = quesShort[i];
 
   newBox.appendChild(newItem);
 
