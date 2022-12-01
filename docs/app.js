@@ -104,12 +104,7 @@ function showLessRes(){
 
 function nextQue(){
   var n = input.length;
-  if(n != ques.length){
-    document.getElementById('quastionCard').classList.add('hide');
-    document.getElementById('quastionCard').classList.remove('main-container');
-    document.getElementById('quastionCard').classList.add('main-container');
-    document.getElementById('quastionCard').classList.remove('hide');
-    
+  if(n != ques.length){    
     var theCurrentQue = ques[n];
     document.getElementById('theQue').innerHTML = theCurrentQue;
 
@@ -228,7 +223,7 @@ var yesOrNoMode = false;
 var ques = [
   'עד כמה תרצו שהסדרה תהיה מצחיקה?',
   'עד כמה רומנטית תרצו שהסדרה תהיה?',
-  'כמה אקשן תרצו שיהיה בסדרה?',
+  'כמה אקשן תרצו שיהיה בסדרה? (יריות וכו)',
   'עד כמה תרצו שהסדרה תכלול או תעסוק במדע בדיוני?',
   'עד כמה ארוכה תרצו שהסדרה תהיה?',
   'עד כמה דמויות ראשיות תרצו שהסדרה תכלול?',

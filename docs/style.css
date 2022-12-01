@@ -127,7 +127,7 @@ table, tr, th {
     font-weight: 800;
 }
 
-.startBtn:hover {
+.startBtn:hover, .startBtn:active{
     background-color: #0D4C92;
     transition-duration: 0.4s;
     color: white;
@@ -148,7 +148,7 @@ table, tr, th {
     font-weight: 500;
 }
 
-.mainBtn:hover {
+.mainBtn:hover, .mainBtn:active {
     background-color: #0D4C92;
     transition-duration: 0.4s;
     color: white;
