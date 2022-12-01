@@ -52,30 +52,23 @@ function answerBtn(answer){
 
 function share(){
   document.getElementById('finalDivBig').classList.add('n-s');
-  html2canvas(document.querySelector("#finalDivBig")).then(async canvas => {
-    const output = document.getElementById('output')
-    //document.body.appendChild(canvas)
-    
+  html2canvas(document.querySelector("#finalDivBig")).then(async canvas => {    
     var dataURL = canvas.toDataURL();
     var blobBin = atob(dataURL.split(',')[1]);
     var array = [];
     for(var i = 0; i < blobBin.length; i++) {
         array.push(blobBin.charCodeAt(i));  
     }
-    var file = new File([new Uint8Array(array)], 'results.png', {type: 'image/png'});
-
-    file = {0: file};
-    //document.getElementById('files').files
+    
+    const blob = await (await fetch(dataURL)).blob()
+    const file = new File([blob], 'results.png', { type: blob.type })
     try {
       await navigator.share({
-        file,
-        title: 'Images',
+        files: [file],
+        title: 'Image',
         text: "היי, רציתי לשתף אותך בתוצאות שיצאו לי בשאלון הסיטקום\n\nלשאלון:\nhttps://noamzuck.github.io/sitcom"
       })
-      output.textContent = 'Shared!'
-    } catch (error) {
-      output.textContent = `Error: ${error.message}`
-    }
+    } catch (error) {return}
   });
   document.getElementById('finalDivBig').classList.remove('n-s');
 }
