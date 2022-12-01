@@ -4,6 +4,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;500;800&display=swap" rel="stylesheet">
+    <script type="module" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script type="module" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
     <link href="style.css" rel="stylesheet">
     <title>Document</title>
 </head>
@@ -20,7 +22,7 @@
             Noam Zuck
         </p>
     </div>
-    
+
     <div id="quastionCard" class="hide">
         <p id="theQue" class="title"></p>
         <p id="theQueDes" class="descriptionQue"></p>
@@ -50,7 +52,7 @@
     </div>
 
     <!--class="hide"-->
-    <div id="finalDiv" class="hide">
+    <div id="finalDivBig" class="hide">
         <p class="credit-text">
             יוצר:
             <br>
@@ -73,6 +75,13 @@
         
         <button class="closeBtn" onclick="hidePopWin()">סגור &times;</button>
     </div>
+
+    קרדיטים:
+    https://colorhunt.co/palette/cff5e7a0e4cb59c1bd0d4c92
+
+    https://html2canvas.hertzen.com/
 </body>
+<output id="output"></output>
+
 <script src="app.js"></script>
 </html>
