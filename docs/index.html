@@ -3,18 +3,29 @@
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;500;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;500;700&display=swap" rel="stylesheet">
     <script type="module" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script type="module" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
     <link href="style.css" rel="stylesheet">
-    <title>Document</title>
+    <title>הסיטקומון</title>
 </head>
 <body>
     <div id="main-div" class="main-container">
-        <p class="title">Welcome!</p>
+        <p class="title">הסיטקומון</p>
 
-        <p class="description">Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla</p>
-        <button class="startBtn" onclick="start()">Click Here To Start</button>
+        <p class="description">
+            ברוכים הבאים לשאלון הסיטקום!<br>
+            פה תוכלו לקבל המלצה לסדרות סיטקום שכדאי לכם לראות,<br>
+            רק לענות על כמה שאלות ומייד תקבלו תוצאות!<br>
+            הנתונים נאספו ממגוון אנשים ברחבי הארץ ועל פי חישובים ושיקלול הנתונים האלגוריתם יציג לכם בדיוק מה שמתאים לכם לצפות.<br>
+            <br>
+            השאלון כולו נמצא בקוד פתוח באתר GitHub.<br>
+            <br>
+            תודות:<br>
+            <a href="https://colorhunt.co">תבניות צבעים </a><br>
+            <a href="https://html2canvas.hertzen.com">המרת HTML לתמונה</a><br>
+        </p>
+        <button class="startBtn" onclick="start()">התחלה</button>
         
         <p class="credit-text">
             יוצר:
@@ -59,7 +70,7 @@
             Noam Zuck
         </p>
         
-        <p id="theQue" class="title" style="margin-bottom: 50px; margin-top: 10px;">הסיטקום הכי מומלץ עבורך הוא:</p>
+        <p id="theQue" class="title" style="margin-bottom: 50px; margin-top: 10px;">הסיטקום המומלץ ביותר עבורך הוא:</p>
     </div>
 
     <div id="rateDiv" class="hide">
@@ -75,11 +86,6 @@
         
         <button class="closeBtn" onclick="hidePopWin()">סגור &times;</button>
     </div>
-
-    קרדיטים:
-    https://colorhunt.co/palette/cff5e7a0e4cb59c1bd0d4c92
-
-    https://html2canvas.hertzen.com/
 </body>
 <script src="app.js"></script>
 </html>

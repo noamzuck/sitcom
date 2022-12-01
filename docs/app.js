@@ -10,8 +10,8 @@ function start(){
   input = [];
   wins = [];
   yesOrNoMode = false;
-  words = realWords;
-  base = realBase;
+  words = realWords.slice();
+  base = JSON.parse(JSON.stringify(realBase));;
 
   for(var i = 1; i < 6; i++){
     var item = document.getElementById(i + 'btn');
@@ -105,6 +105,11 @@ function showLessRes(){
 function nextQue(){
   var n = input.length;
   if(n != ques.length){
+    document.getElementById('quastionCard').classList.add('hide');
+    document.getElementById('quastionCard').classList.remove('main-container');
+    document.getElementById('quastionCard').classList.add('main-container');
+    document.getElementById('quastionCard').classList.remove('hide');
+    
     var theCurrentQue = ques[n];
     document.getElementById('theQue').innerHTML = theCurrentQue;
 
@@ -163,13 +168,21 @@ function nextQue(){
 
       var newRes = document.createElement('p');
       newRes.classList.add('result');
-      newRes.innerHTML = (parseInt(key) + 1) + '# - ' + wins[key].name + ' (' + wins[key].difference + '% התאמה)';
+      newRes.innerHTML = '<b>' + (parseInt(key) + 1) + '# - ' + wins[key].name + '</b> (' + wins[key].difference + '% התאמה)';
       
       if(cou < 4) document.getElementById('finalDiv').appendChild(newHunBar);
       else if(cou == 4) {
         var nh = document.createElement('button');
         document.getElementById('finalDiv').appendChild(nh);
         nh.outerHTML = '<button id="showMoreRes" class="closeBtn" onclick="showMoreRes()">הצג תוצאות נוספות</button>';
+
+        var nh = document.createElement('button');
+        document.getElementById('finalDiv').appendChild(nh);
+        nh.outerHTML = '<button class="closeBtn m-r" onclick="start()">התחל מחדש</button>';
+    
+        nh = document.createElement('button');
+        document.getElementById('finalDiv').appendChild(nh);
+        nh.outerHTML = '<button class="closeBtn m-r" onclick="share()">שיתוף תוצאות</button>';
 
         var newEmptyDiv = document.createElement('div');
         newEmptyDiv.id = 'emptyDiv';
@@ -191,13 +204,15 @@ function nextQue(){
       nh.outerHTML = '<button class="closeBtn" onclick="showLessRes()">הסתר תוצאות נוספות</button>';
     }
 
-    var nh = document.createElement('button');
-    document.getElementById('finalDiv').appendChild(nh);
-    nh.outerHTML = '<button class="closeBtn m-r" onclick="start()">התחל מחדש</button>';
-
-    nh = document.createElement('button');
-    document.getElementById('finalDiv').appendChild(nh);
-    nh.outerHTML = '<button class="closeBtn m-r" onclick="share()">שיתוף תוצאות</button>';
+    if(cou < 4){
+      var nh = document.createElement('button');
+      document.getElementById('finalDiv').appendChild(nh);
+      nh.outerHTML = '<button class="closeBtn m-r" onclick="start()">התחל מחדש</button>';
+  
+      nh = document.createElement('button');
+      document.getElementById('finalDiv').appendChild(nh);
+      nh.outerHTML = '<button class="closeBtn m-r" onclick="share()">שיתוף תוצאות</button>';
+    }
 
     document.getElementById('quastionCard').classList.add('hide');
     document.getElementById('quastionCard').classList.remove('main-container');
@@ -215,12 +230,12 @@ var ques = [
   'עד כמה רומנטית תרצו שהסדרה תהיה?',
   'כמה אקשן תרצו שיהיה בסדרה?',
   'עד כמה תרצו שהסדרה תכלול או תעסוק במדע בדיוני?',
-  'עד כמה ארוכה תרצו שהסדרה תהיה? (הכוונה למספר העונות)',
+  'עד כמה ארוכה תרצו שהסדרה תהיה?',
   'עד כמה דמויות ראשיות תרצו שהסדרה תכלול?',
   'עד כמה תרצו שהסדרה תהיה גסה?',
   'עד כמה תרצו שהסדרה תעסוק בחייהם היומיים של הדמויות?',
   'עד כמה תרצו שהסדרה תהיה ישנה?',
-  'האם תרצו שהדמויות בסדרה ישברו את הקיר הרביעי?<br>(לדוגמא דיבור אל המצלמה או הכרה בעובדה שהם בתוך סדרת טלוויזיה- כמו שעושים בריאליטי ובדוקומנטרי)',
+  'האם תרצו שהדמויות בסדרה ישברו את הקיר הרביעי?',
   'האם תרצו שהסדרה תכלול צחוק של קהל ברקע?',
   'האם תרצו שהסדרה תהיה מצולמת או מצויירת?'
 ];
@@ -235,7 +250,7 @@ quesDes = [
   '1 - בכלל לא גסה | 5 - מאוד גסה',
   '1 - בכלל לא | 5 - הרבה',
   '1 - 2017 ומעלה | 5 - 1980 ומטה',
-  '',
+  'לדוגמא דיבור אל המצלמה או הכרה בעובדה שהם בתוך סדרת טלוויזיה (כמו שעושים בריאליטי ובדוקומנטרי)',
   '',
   ''
 ];
