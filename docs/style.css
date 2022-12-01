@@ -2,7 +2,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: firebrick;
+    background-color: #A0E4CB;
     font-family: 'Assistant', sans-serif;
 }
 
@@ -16,7 +16,7 @@ table, tr, th {
     border-radius: 50px;
     padding: 15px;
     box-shadow: 0 0 10px;
-    background-color: rgb(249, 249, 249);
+    background-color: #CFF5E7;
     text-align: center;
     padding-bottom: 30px;
     direction: rtl;
@@ -25,7 +25,7 @@ table, tr, th {
 
 .title {
     margin-top: 25px;
-    font-size: 50px;
+    font-size: 40px;
     margin-bottom: 5px;
     margin-left: 75px;
     margin-right: 75px;
@@ -71,7 +71,7 @@ table, tr, th {
 }
 
 .barRes {
-    background-color: rgba(27, 106, 176, 0.266);
+    background-color: #0d4b924f;
     width: 0%;
     height: 100%;
     border-radius: 35px;
@@ -84,7 +84,7 @@ table, tr, th {
 }
 
 .barHunRes {
-    border: 2px solid rgb(13, 13, 204);
+    border: 2px solid #0D4C92;
     width: 90%;
     margin-left: 50px;
     margin-right: 50px;
@@ -99,7 +99,7 @@ table, tr, th {
 }
 
 .barHunRes:hover {
-    background-color: rgb(13, 13, 204);
+    background-color: #0D4C92;
     transition-duration: 0.4s;
     color: white;
     border-radius: 35px;
@@ -109,18 +109,18 @@ table, tr, th {
 }
 
 .startBtn {
-    border: 2px solid rgb(13, 13, 204);
+    border: 2px solid #0D4C92;
     border-radius: 20px;
     padding: 20px 35px;
     cursor: pointer;
-    background-color: rgba(27, 106, 176, 0.062);
+    background-color: #0d4b9213;
     font-size: 20px;
     transition-duration: 0.25s;
     margin-top: 10px;
 }
 
 .startBtn:hover {
-    background-color: rgb(13, 13, 204);
+    background-color: #0D4C92;
     transition-duration: 0.4s;
     color: white;
     border-radius: 35px;
@@ -128,11 +128,11 @@ table, tr, th {
 }
 
 .mainBtn {
-    border: 2px solid rgb(13, 13, 204);
+    border: 2px solid #0D4C92;
     border-radius: 20px;
     padding: 20px 35px;
     cursor: pointer;
-    background-color: rgba(27, 106, 176, 0.062);
+    background-color: #0d4b9213;
     font-size: 20px;
     transition-duration: 0.25s;
     margin-top: 10px;
@@ -140,7 +140,7 @@ table, tr, th {
 }
 
 .mainBtn:hover {
-    background-color: rgb(13, 13, 204);
+    background-color: #0D4C92;
     transition-duration: 0.4s;
     color: white;
     border-radius: 35px;
@@ -158,7 +158,7 @@ table, tr, th {
 .boxRate {
     border-radius: 25xp;
     background-color: white;
-    border: 2px solid blue;
+    border: 2px solid #0D4C92;
     border-radius: 25px;
     margin: 15px;
     padding: 6px 35px;
@@ -169,8 +169,8 @@ table, tr, th {
 
 .boxRate:hover {
     cursor: pointer;
-    color: blue;
-    background-color: rgb(13, 13, 204);
+    color: #0D4C92;
+    background-color: #0D4C92;
     border-radius: 40px;
     transition-duration: 0.25s;
     color: white;
@@ -178,7 +178,7 @@ table, tr, th {
 
 .modal-content {
   background-color: white;
-  border: 2px solid rgb(13, 13, 204);
+  border: 2px solid #0D4C92;
   margin: auto;
   margin-top: 25px;
   padding: 20px;
@@ -199,20 +199,19 @@ table, tr, th {
 }
 
 .closeBtn {
-  border: 2px solid rgb(204, 13, 13);
+  border: 2px solid #59C1BD;
   border-radius: 20px;
   padding: 10px 60px;
   cursor: pointer;
-  background-color: rgba(176, 27, 27, 0.062);
+  background-color: #cff5e775;
   font-size: 20px;
   transition-duration: 0.25s;
   margin-top: 10px;
   font-family: 'Assistant', sans-serif;
 }
 
-.closeBtn:hover,
-.closeBtn:focus {
-  background-color: rgb(204, 13, 13);
+.closeBtn:hover {
+  background-color: #59C1BD;
   transition-duration: 0.4s;
   color: white;
   border-radius: 35px;
@@ -225,4 +224,16 @@ table, tr, th {
     color: black;
     font-size: 18px;
     padding-top: 10px;
+}
+
+.m-b {
+    margin-bottom: 20px;
+}
+
+.m-r {
+    margin-right: 20px;
+}
+
+.n-s {
+    box-shadow: none;
 }
