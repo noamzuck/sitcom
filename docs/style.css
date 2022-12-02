@@ -1,10 +1,17 @@
 body {
-    display: flex;
     justify-content: center;
     align-items: center;
     background-color: #A0E4CB;
     font-family: 'Assistant', sans-serif;
     font-weight: 300;
+    direction: rtl;
+    text-align: center;
+}
+
+.big {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 table, tr, th {
@@ -232,8 +239,14 @@ table, tr, th {
     direction: rtl;
     color: black;
     font-size: 18px;
-    padding-top: 10px;
     font-weight: 500;
+    margin-top: 0px;
+}
+
+.bh {
+    float: right;
+    padding-right: 15px;
+    font-size: 20px;
 }
 
 .m-b {
