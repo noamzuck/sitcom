@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="he">
+<html charset="utf-8">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -65,6 +65,7 @@
                 </th>
             </tr>
         </table>
+        <button id="nextBtn" class="hide" style="margin-top: 0;" onclick="answerBtn(0)">דילוג</button>
     </div>
 
     <!--class="hide"-->
@@ -79,6 +80,12 @@
         <div id="popWindowData" class="modal-content-table"></div>
         
         <button class="closeBtn" onclick="hidePopWin()">סגור &times;</button>
+    </div>
+
+    <div id="loading" class="hide" style="background-color: #bcc9c7; padding: 0; width: auto;">
+        <video id="loadingVid" width="250px" loop>
+            <source src="loadingVid.mp4"></source>
+        </video>
     </div>
 </div>
 
@@ -96,7 +103,6 @@
 
     <p style="font-weight: 300;">ליצירת קשר: sys.sitcom@gmail.com</p>
 </p>
-
 </body>
 <script src="app.js"></script>
 </html>

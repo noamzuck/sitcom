@@ -6,6 +6,7 @@ body {
     font-weight: 300;
     direction: rtl;
     text-align: center;
+    width: 99.5%;
 }
 
 .big {
@@ -17,6 +18,17 @@ body {
 
 table, tr, th {
   position: relative;
+  text-align: center;
+  justify-content: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.w-th {
+    width: 50%;
 }
 
 .main-container {
@@ -30,6 +42,7 @@ table, tr, th {
     padding-bottom: 30px;
     direction: rtl;
     margin-bottom: 30px;
+    overflow: hidden;
 }
 
 .title {
@@ -60,13 +73,14 @@ table, tr, th {
 }
 
 .rateTitle {
-    font-size: 30px;
+    font-size: 200%;
     margin-bottom: -10px;
+    margin-top: 2px;
     font-weight: 700;
 }
 
 .rateDes {
-    font-size: 50px;
+    font-size: 300%;
     margin: -5px;
     font-weight: 300;
 }
@@ -79,7 +93,7 @@ table, tr, th {
     margin-right: 15px;
     text-align: right;
     position: relative;
-    transform: translateY(60%);
+    transform: translateY(55%);
     width: 600px;
 }
 
@@ -98,9 +112,9 @@ table, tr, th {
 
 .barHunRes {
     border: 2px solid #0D4C92;
-    width: 90%;
-    margin-left: 50px;
-    margin-right: 50px;
+    /*margin-left: 20px;
+    margin-right: 20px;*/
+    width: 99%;
     margin-bottom: 15px;
     border-top-right-radius: 35px;
     border-bottom-right-radius: 35px;
@@ -109,6 +123,8 @@ table, tr, th {
     cursor: pointer;
     transition-duration: 0.2s;
     align-items: right;
+    position: relative;
+    overflow: hidden;
 }
 
 .barHunRes:hover {
@@ -119,6 +135,14 @@ table, tr, th {
     padding-top: 5px;
     padding-bottom: 5px;
     padding-right: 5px;
+}
+
+.finalDiv {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    justify-content: center;
+    align-items: center;
 }
 
 .startBtn {
@@ -147,21 +171,36 @@ table, tr, th {
     border: 2px solid #0D4C92;
     border-radius: 20px;
     padding: 20px 35px;
-    cursor: pointer;
     background-color: #0d4b9213;
     font-size: 20px;
     transition-duration: 0.25s;
     margin-top: 10px;
     font-family: 'Assistant', sans-serif;
     font-weight: 500;
+    position: relative;
+    text-align: center;
 }
 
-.mainBtn:hover {
+@media (hover: hover) {
+    .mainBtn:hover{
+        background-color: #0D4C92;
+        color: white;
+        transition-duration: 0.4s;
+        border-radius: 35px;
+        padding: 20px 40px;
+        cursor: pointer;
+    }
+}
+
+@media (hover: none) {
+  .mainBtn:active{
     background-color: #0D4C92;
-    transition-duration: 0.4s;
     color: white;
+    transition-duration: 0.4s;
     border-radius: 35px;
     padding: 20px 40px;
+    cursor: pointer;
+  }
 }
   
 .hide {
@@ -178,19 +217,10 @@ table, tr, th {
     border: 2px solid #0D4C92;
     border-radius: 25px;
     margin: 15px;
-    padding: 6px 35px;
+    padding: 6px;
     position: relative;
     transition-duration: 0.1s;
     color: black;
-}
-
-.boxRate:hover {
-    cursor: pointer;
-    color: #0D4C92;
-    background-color: #0D4C92;
-    border-radius: 40px;
-    transition-duration: 0.25s;
-    color: white;
 }
 
 .modal-content {
@@ -207,6 +237,7 @@ table, tr, th {
   margin-bottom: 30px;
   text-align: center;
   direction: rtl;
+  width: 85%;
 }
 
 .modal-content-table {

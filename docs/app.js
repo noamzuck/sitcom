@@ -1,17 +1,29 @@
 function c(v){console.log(v)}
 function t(v){console.table(v)}
 
-function start(){
+async function start(){
   if(document.getElementById('finalDiv') != null) document.getElementById('finalDiv').remove();
   var bigDiv = document.createElement('div');
   bigDiv.id = 'finalDiv';
+  bigDiv.classList.add('finalDiv');
   document.getElementById('finalDivBig').appendChild(bigDiv);
 
   input = [];
   wins = [];
   yesOrNoMode = false;
-  words = realWords.slice();
-  base = JSON.parse(JSON.stringify(realBase));;
+
+  document.getElementById('finalDivBig').classList.add('hide');
+  document.getElementById('finalDivBig').classList.remove('main-container');
+
+  document.getElementById('main-div').classList.add('hide');
+  document.getElementById('main-div').classList.remove('main-container');
+
+  document.getElementById('loading').classList.add('main-container');
+  document.getElementById('loading').classList.remove('hide');
+  
+  document.getElementById('loadingVid').play();
+
+  await getFromUrl('https://raw.githubusercontent.com/noamzuck/sitcom/master/docs/sitcomon.csv').then(csv => {csvToJSON(csv)});
 
   for(var i = 1; i < 6; i++){
     var item = document.getElementById(i + 'btn');
@@ -23,17 +35,24 @@ function start(){
     item.innerHTML = i;
   }
 
-  document.getElementById('finalDivBig').classList.add('hide');
-  document.getElementById('finalDivBig').classList.remove('main-container');
+  await new Promise(r => setTimeout(r, 2000));
 
-  document.getElementById('main-div').classList.add('hide');
-  document.getElementById('main-div').classList.remove('main-container');
+  document.getElementById('nextBtn').classList.add('hide');
+  document.getElementById('nextBtn').classList.remove('mainBtn');
+  document.getElementById('0btn').classList.add('mainBtn');
+  document.getElementById('0btn').classList.add('widthHun');
+  document.getElementById('0btn').classList.remove('hide');
 
   document.getElementById('quastionCard').classList.remove('hide');
   document.getElementById('quastionCard').classList.add('main-container');
 
   document.getElementById('theQue').innerHTML = ques[0];
   document.getElementById('theQueDes').innerHTML = quesDes[0];
+
+  document.getElementById('loading').classList.add('hide');
+  document.getElementById('loading').classList.remove('main-container');
+
+  document.getElementById('loadingVid').pause();
 }
 
 function answerBtn(answer){
@@ -92,14 +111,12 @@ function hidePopWin(){
 
 function showMoreRes(){
   document.getElementById('emptyDiv').classList.remove('hide');
-
-  document.getElementById('showMoreRes').outerHTML = '<button id="showMoreRes" class="closeBtn m-b" onclick="showLessRes()">הסתר תוצאות נוספות</button>';
+  document.getElementById('showMoreRes').outerHTML = '<button id="showMoreRes" class="closeBtn m-b m-r" onclick="showLessRes()">הסתר תוצאות נוספות</button>';
 }
 
 function showLessRes(){
   document.getElementById('emptyDiv').classList.add('hide');
-
-  document.getElementById('showMoreRes').outerHTML = '<button id="showMoreRes" class="closeBtn" onclick="showMoreRes()">הצג תוצאות נוספות</button>';
+  document.getElementById('showMoreRes').outerHTML = '<button id="showMoreRes" class="closeBtn m-r" onclick="showMoreRes()">הצג תוצאות נוספות</button>';
 }
 
 function nextQue(){
@@ -124,6 +141,11 @@ function nextQue(){
           else if(i == 1) item.innerHTML = 'כן';
           else item.innerHTML = 'לא';
         }
+        document.getElementById('0btn').classList.add('hide');
+        document.getElementById('0btn').classList.remove('mainBtn');
+        document.getElementById('0btn').classList.remove('widthHun');
+        document.getElementById('nextBtn').classList.add('mainBtn');
+        document.getElementById('nextBtn').classList.remove('hide');
         break;
       case 11:
         for(var i = 1; i < 3; i++){
@@ -137,7 +159,6 @@ function nextQue(){
     for(var key in base){
         wins.push({name: key, difference: 0});
     }
-    
     for(var key in base){
       var i = 0;
       var newKey = words.indexOf(key);
@@ -169,15 +190,15 @@ function nextQue(){
       else if(cou == 4) {
         var nh = document.createElement('button');
         document.getElementById('finalDiv').appendChild(nh);
-        nh.outerHTML = '<button id="showMoreRes" class="closeBtn" onclick="showMoreRes()">הצג תוצאות נוספות</button>';
-
-        var nh = document.createElement('button');
-        document.getElementById('finalDiv').appendChild(nh);
         nh.outerHTML = '<button class="closeBtn m-r" onclick="start()">התחל מחדש</button>';
     
         nh = document.createElement('button');
         document.getElementById('finalDiv').appendChild(nh);
         nh.outerHTML = '<button class="closeBtn m-r" onclick="share()">שיתוף תוצאות</button>';
+
+        nh = document.createElement('button');
+        document.getElementById('finalDiv').appendChild(nh);
+        nh.outerHTML = '<button id="showMoreRes" class="closeBtn m-r" onclick="showMoreRes()">הצג תוצאות נוספות</button>';
 
         var newEmptyDiv = document.createElement('div');
         newEmptyDiv.id = 'emptyDiv';
@@ -216,6 +237,34 @@ function nextQue(){
   }
 }
 
+async function getFromUrl(url){
+  var response = await fetch(url, {});
+  return response.text();
+}
+
+function csvToJSON(csvStr){
+  const csvData = csvStr.split("\n").map(function(row){return row.split(",")});
+
+  var result = {}
+
+  const row = csvData[0];
+  const column = csvData.map(function(value){return value[0]});
+
+  for (var i = 1; i < column.length; i++) {
+    var tmpArr = [];
+    for (var j = 1; j < row.length; j++) {
+      tmpArr.push(parseFloat(csvData[i][j]));
+    }
+    result[column[i]] = tmpArr;
+  }
+
+  column.shift();
+  words = column;
+  base = result;
+}
+
+var base;
+var words;
 var input = [];
 var wins = [];
 var yesOrNoMode = false;
@@ -272,8 +321,9 @@ table.appendChild(tr);
 var th;
 
 for(var i = 0; i < quesShort.length; i++){
-  if(i % parseInt(quesShort.length / 3) == 0) {
+  if(i % parseInt(quesShort.length / 2) == 0) {
     th = document.createElement('th');
+    th.classList.add('w-th');
     tr.appendChild(th);
   }
 
@@ -294,76 +344,3 @@ for(var i = 0; i < quesShort.length; i++){
 
   newBox.appendChild(newItemDes);
 }
-
-
-var realWords = ['המפץ הגדול', 'Harvard', 'Yale', 'Oxford', 'Nosh', 'MIT', 'Noam', 'Dell', 'YK8', 'IL', 'USA', 'Nba', 'Noah', 'HP', 'Friends', 'New Girl', 'Philly', 'NYC', 'LA', 'IDK', 'LOL'];
-
-var words = realWords;
-
-var realBase = {
-  "המפץ הגדול": [
-    3, 3, 1, 3, 4, 5, 4, 5, 2, 2, 1, 1
-  ],
-  Harvard: [
-    1, 1, 4, 4, 1, 4, 3, 5, 5, 2, 0, 0
-  ],
-  Yale: [
-    5, 1, 2, 3, 3, 3, 1, 5, 1, 3, 0, 0
-  ],
-  Oxford: [
-    3, 5, 4, 1, 1, 5, 3, 4, 3, 1, 0, 0
-  ],
-  Nosh: [
-    5, 5, 4, 1, 4, 2, 2, 2, 3, 5, 0, 0
-  ],
-  MIT: [
-    2, 5, 1, 4, 4, 1, 2, 3, 1, 1, 0, 0
-  ],
-  Noam: [
-    1, 3, 4, 1, 5, 4, 4, 1, 5, 3, 0, 0
-  ],
-  Dell: [
-    4, 1, 3, 1, 4, 2, 5, 5, 4, 2, 0, 0
-  ],
-  YK8: [
-    4, 5, 1, 4, 4, 5, 3, 5, 1, 2, 0, 0
-  ],
-  IL: [
-    5, 4, 3, 4, 2, 1, 5, 1, 4, 2, 0, 0
-  ],
-  USA: [
-    2, 3, 3, 3, 4, 3, 3, 1, 2, 3, 0, 0
-  ],
-  Nba: [
-    1, 3, 2, 4, 4, 2, 2, 1, 5, 4, 0, 0
-  ],
-  Noah: [
-    5, 4, 5, 3, 5, 3, 1, 1, 2, 5, 0, 0
-  ],
-  HP: [
-    2, 2, 1, 3, 1, 3, 5, 2, 3, 3, 0, 0
-  ],
-  Friends: [
-    5, 3, 5, 5, 2, 5, 2, 3, 3, 3, 0, 0
-  ],
-  'New Girl': [
-    3, 3, 1, 1, 3, 3, 1, 4, 5, 2, 2, 1
-  ],
-  Philly: [
-    3, 2, 1, 3, 2, 5, 3, 2, 4, 2, 0, 0
-  ],
-  NYC: [
-    4, 3, 4, 2, 3, 5, 4, 4, 3, 2, 0, 0
-  ],
-  LA: [
-    5, 5, 2, 5, 5, 5, 1, 4, 3, 1, 0, 0
-  ],
-  IDK: [
-    3, 1, 2, 2, 1, 3, 4, 2, 2, 4, 0, 0
-  ],
-  LOL: [
-    3, 3, 4, 4, 3, 1, 5, 3, 2, 5, 0, 0
-  ]
-};
-
-var base = realBase;
